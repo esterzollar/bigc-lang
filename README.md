@@ -26,6 +26,12 @@ Downloads the engine and scaffolds the "Blessed Way" project structure in your c
 curl -sSL https://raw.githubusercontent.com/esterzollar/bigc-lang/main/setup.sh | bash
 ```
 
+### 3. Windows Setup (PowerShell)
+Run this in PowerShell to download the engine and set up your environment:
+```powershell
+iwr https://raw.githubusercontent.com/esterzollar/bigc-lang/main/setup.ps1 -useb | iex
+```
+
 ---
 
 ## The BigC Philosophy
