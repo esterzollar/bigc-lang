@@ -16,6 +16,14 @@ NC='\033[0m'
 
 echo -e "${BLUE}BigC: Local Setup starting...${NC}"
 
+# SAFETY CHECK: Protect System Dirs
+CURRENT_DIR=$(pwd)
+if [[ "$CURRENT_DIR" == "/bin"* || "$CURRENT_DIR" == "/usr/bin"* || "$CURRENT_DIR" == "/etc"* ]]; then
+    echo -e "${RED}Error: You are installing inside a system directory ($CURRENT_DIR)!${NC}"
+    echo "Please move to your home folder first: cd ~"
+    exit 1
+fi
+
 # 1. Create env_lib
 echo "Creating local env_lib..."
 mkdir -p env_lib
