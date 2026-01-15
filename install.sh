@@ -35,7 +35,8 @@ done
 
 # 4. Create Global Wrapper
 echo "Installing global wrapper..."
-sudo bash -c 'cat << EOF > /usr/local/bin/bigrun
+
+cat << 'EOF' > bigrun_wrapper
 #!/bin/bash
 # BigC Global Wrapper
 
@@ -45,18 +46,20 @@ if [ ! -d "env_lib" ]; then
 fi
 
 # Symlink global libs to local env_lib if they dont exist
-# This satisfies the engine'"'"'s requirement for a local env_lib/ folder
+# This satisfies the engine's requirement for a local env_lib/ folder
 for lib_path in /usr/local/share/bigc/env_lib/*.bigenv; do
-    lib_name=\$(basename "\$lib_path")
-    if [ ! -f "env_lib/\$lib_name" ]; then
-        ln -sf "\$lib_path" "env_lib/\$lib_name"
+    lib_name=$(basename "$lib_path")
+    if [ ! -f "env_lib/$lib_name" ]; then
+        ln -sf "$lib_path" "env_lib/$lib_name"
     fi
 done
 
 # Execute the actual engine
-/usr/local/lib/bigc/bigrun_engine "\$@"
+/usr/local/lib/bigc/bigrun_engine "$@"
 EOF
-'
+
+chmod +x bigrun_wrapper
+sudo mv bigrun_wrapper /usr/local/bin/bigrun
 
 sudo chmod +x /usr/local/bin/bigrun
 
