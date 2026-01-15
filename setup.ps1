@@ -1,6 +1,15 @@
 # BigC Windows Setup (setup.ps1)
 # Scaffolds a BigC project in the current directory.
 
+# SAFETY CHECK: Protect System32
+$currentPath = Get-Location
+if ($currentPath.Path -like "*\Windows\System32*") {
+    Write-Host "Error: You are running inside System32!" -ForegroundColor Red
+    Write-Host "Please move to a user folder (like Desktop or Documents) before installing."
+    Write-Host "Try this command first: cd `$HOME\Documents"
+    exit 1
+}
+
 Write-Host "BigC: Local Setup starting..." -ForegroundColor Cyan
 
 # 1. Create env_lib
