@@ -23,14 +23,14 @@ sudo mkdir -p /usr/local/lib/bigc
 
 # 2. Download Binary
 echo "Downloading bigrun engine..."
-sudo curl -sSL "$BASE_URL/GitHub%20Ready/bigrun" -o /usr/local/lib/bigc/bigrun_engine
+sudo curl -sSL "$BASE_URL/bigrun" -o /usr/local/lib/bigc/bigrun_engine
 sudo chmod +x /usr/local/lib/bigc/bigrun_engine
 
 # 3. Download Standard Libraries (env_lib)
 echo "Downloading standard libraries..."
 LIBS=("file" "fixer" "gethor" "len" "math" "picker" "shim" "statement" "test")
 for lib in "${LIBS[@]}"; do
-    sudo curl -sSL "$BASE_URL/GitHub%20Ready/env_lib/$lib.bigenv" -o "/usr/local/share/bigc/env_lib/$lib.bigenv"
+    sudo curl -sSL "$BASE_URL/env_lib/$lib.bigenv" -o "/usr/local/share/bigc/env_lib/$lib.bigenv"
 done
 
 # 4. Create Global Wrapper
@@ -45,7 +45,7 @@ if [ ! -d "env_lib" ]; then
 fi
 
 # Symlink global libs to local env_lib if they dont exist
-# This satisfies the engine's requirement for a local env_lib/ folder
+# This satisfies the engine'"'"'s requirement for a local env_lib/ folder
 for lib_path in /usr/local/share/bigc/env_lib/*.bigenv; do
     lib_name=\$(basename "\$lib_path")
     if [ ! -f "env_lib/\$lib_name" ]; then
@@ -55,7 +55,8 @@ done
 
 # Execute the actual engine
 /usr/local/lib/bigc/bigrun_engine "\$@"
-EOF'
+EOF
+'
 
 sudo chmod +x /usr/local/bin/bigrun
 

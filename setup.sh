@@ -22,14 +22,14 @@ mkdir -p env_lib
 
 # 2. Download Binary
 echo "Downloading bigrun engine..."
-curl -sSL "$BASE_URL/GitHub%20Ready/bigrun" -o bigrun
+curl -sSL "$BASE_URL/bigrun" -o bigrun
 chmod +x bigrun
 
 # 3. Download Standard Libraries (env_lib)
 echo "Downloading standard libraries..."
 LIBS=("file" "fixer" "gethor" "len" "math" "picker" "shim" "statement" "test")
 for lib in "${LIBS[@]}"; do
-    curl -sSL "$BASE_URL/GitHub%20Ready/env_lib/$lib.bigenv" -o "env_lib/$lib.bigenv"
+    curl -sSL "$BASE_URL/env_lib/$lib.bigenv" -o "env_lib/$lib.bigenv"
 done
 
 # 4. Create Template app.big
