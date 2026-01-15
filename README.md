@@ -27,7 +27,15 @@ curl -sSL https://raw.githubusercontent.com/esterzollar/bigc-lang/main/setup.sh 
 ```
 
 ### 3. Windows Setup (PowerShell)
-Run this in PowerShell to download the engine and set up your environment:
+
+**Option A: Global Install (Recommended)**
+Installs BigC globally so you can run `bigrun` from any folder.
+```powershell
+iwr https://raw.githubusercontent.com/esterzollar/bigc-lang/main/install.ps1 -useb | iex
+```
+
+**Option B: Local Setup (Project Only)**
+Downloads BigC just for the current folder.
 ```powershell
 iwr https://raw.githubusercontent.com/esterzollar/bigc-lang/main/setup.ps1 -useb | iex
 ```
