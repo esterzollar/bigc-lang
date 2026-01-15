@@ -50,7 +50,7 @@ attach statement
 MsgRaw = "Hello BigC! Your Windows environment is ready."
 run LogSuccess()
 
-print "Try running: ./bigrun app.big"
+print "Try running: bigrun app.big"
 "@
     Set-Content -Path "app.big" -Value $content
 }
