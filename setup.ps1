@@ -21,10 +21,17 @@ Invoke-WebRequest -Uri $url -OutFile $tarball
 Write-Host "Extracting..."
 tar -xf $tarball
 
-# Cleanup
+# 4. FIX: Move binary to root if nested
+if (Test-Path "Windows_exe\bigrun.exe") {
+    Write-Host "Moving binary to root..."
+    Move-Item -Path "Windows_exe\bigrun.exe" -Destination ".\bigrun.exe" -Force
+    Remove-Item -Path "Windows_exe" -Recurse -Force
+}
+
+# Cleanup Tarball
 Remove-Item $tarball
 
-# 4. Create Template app.big
+# 5. Create Template app.big
 if (!(Test-Path "app.big")) {
     Write-Host "Creating app.big template..."
     $content = @"
