@@ -1,0 +1,51 @@
+# Chapter 25 Master Example: BigGuy Input State
+
+start view Main
+    init
+        set window title "BigGuy Input State Verification"
+        set window size 600 400
+        
+        BoxXRaw = 250
+        BoxYRaw = 150
+        StatusRaw = "Idle"
+        BoxColorRaw = "#FF4444"
+    end
+
+    # Reset frame state
+    StatusRaw = "Idle"
+    BoxColorRaw = "#FF4444"
+
+    # 1. Hover Detection
+    if hover "TestBox"
+        StatusRaw = "Hovering"
+        BoxColorRaw = "#44FF44"
+    end if
+
+    # 2. Press Detection
+    if press "TestBox"
+        StatusRaw = "Pressing"
+        BoxColorRaw = "#4444FF"
+    end if
+
+    # 3. Drag Detection
+    if drag "TestBox"
+        StatusRaw = "Dragging"
+        BoxXRaw = BoxXRaw + $DragX
+        BoxYRaw = BoxYRaw + $DragY
+    end if
+
+    # Render
+    draw text "BigGuy Input State Test" at 20 20 size 24
+    draw text "Status: $StatusRaw" at 20 60 size 18 fill "#FFFF00"
+    draw text "Drag the box below!" at 20 100 size 14
+    
+    # The Interactive Box
+    draw rectangle at BoxXRaw BoxYRaw size 100 100 fill BoxColorRaw tag "TestBox"
+    
+    # Mouse Position Monitor
+    draw text "Mouse: $MouseX , $MouseY" at 450 20 size 12 alpha 0.5
+    
+    if keydown "escape" & stop run
+end view
+
+start guy Main

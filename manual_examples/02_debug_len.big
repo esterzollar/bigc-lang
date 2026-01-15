@@ -1,0 +1,15 @@
+# 02_debug_len.big
+Name = "Ester"
+L1 = len"Ester"
+L2 = len$Name
+L3 = len{$Name}
+L4 = lenName
+print "Literal: $L1"
+print "Dollar: $L2"
+print "Braced: $L3"
+print "RawIdent: $L4"
+
+MyList = "[\"A\",\"B\"]"
+C1 = len$MyList
+print "ListLen: $C1"
+

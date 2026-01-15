@@ -1,0 +1,11 @@
+use web
+
+print "--- Client Test 1: Home ---"
+get web "http://localhost:8086/" & set as {HomeRes}
+if any bug found & print "Bug: $BugType"
+print "Response: $HomeRes"
+
+print "--- Client Test 2: API ---"
+get web "http://localhost:8086/api/user123" & set as {ApiRes}
+if any bug found & print "Bug: $BugType"
+print "Response: $ApiRes"

@@ -1,0 +1,28 @@
+# Chapter 20 Master Example: Hidden Logic
+
+# 1. Multi-Value Packing
+# 'get command' usually returns a list of args. 
+# We can pack it even if there are multiple.
+get command & set as list {PackedArgs}
+print "Packed Args: $PackedArgs"
+
+# 2. Smart Indexing & Coercion
+split "A,B,C" by "," & set as list {Letters}
+# Using 1.0 instead of 1
+get from {Letters} @1.0 & set as {FirstLetter}
+if FirstLetter = "A" & print "Smart Indexing (Coercion): Verified."
+
+# 3. Solver Precedence (PEMDAS)
+MathResult = S[ (10 + 2) * 2^2 ]
+# (12) * 4 = 48
+if MathResult = 48 & print "Solver Precedence: Verified."
+
+# 4. Atomic Locking (Diagnostic)
+# We can't easily show the lock file in a fast script, 
+# but we can verify DBIG still works.
+dbig set "Test" as "LockOK" @"hidden_test.dbig"
+dbig get "Test" @"hidden_test.dbig" & set as {LockCheck}
+if LockCheck = "LockOK" & print "Atomic DBIG Logic: Verified."
+delete file @"hidden_test.dbig"
+
+print "\nChapter 20 Verification Complete."

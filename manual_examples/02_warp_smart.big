@@ -1,0 +1,22 @@
+# 02_warp_smart.big
+# Verifying Smart Warp (Literal Identifiers + Clean Currency)
+
+Name = "Apple"
+Price = 10.50
+Total = 999.00  # Variable collision test
+
+# 1. Identifier Collision Test
+# 'Total' should print as the word "Total", NOT 999.00
+# '$Total' should print 999.00
+Msg1 = w(Total: $Total)
+print "Collision Check: $Msg1"
+
+# 2. Clean Currency Test
+# Expected: Cost: $10.5
+Msg2 = w(Cost: $"$Price")
+print "Currency Check: $Msg2"
+
+# 3. Mixed Test
+# Expected: Item: Apple | Price: $10.5 | Total Cost: $999
+Msg3 = w(Item: $Name | Price: $"$Price" | "Total Cost": $"$Total")
+print "Mixed: $Msg3"

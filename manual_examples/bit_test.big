@@ -1,0 +1,5 @@
+# Test NEBC
+bit code "Secret Message" with "MyKey" nebc & set as {Encrypted}
+print "Encrypted: $Encrypted"
+bit decode "$Encrypted" with "MyKey" nebc & set as {Decrypted}
+print "Decrypted: $Decrypted"

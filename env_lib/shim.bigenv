@@ -1,0 +1,22 @@
+# BigC Standard Environment: Shim
+# Compatibility helpers for common string/list tasks.
+
+# Splits text by delimiter into a global list 'SplitRaw'
+start doing Split(text, delim)
+    split text by delim & set as list SplitRaw
+end doing
+
+# Converts text to UPPERCASE -> 'TextRaw'
+start doing ToUpper(text)
+    get text as bigcap & set as TextRaw
+end doing
+
+# Converts text to lowercase -> 'TextRaw'
+start doing ToLower(text)
+    get text as lower & set as TextRaw
+end doing
+
+# Checks if a string is a valid number -> 'IsNumRaw' ("true"/"false")
+start doing IsNum(text)
+    get text as number & set as IsNumRaw
+end doing

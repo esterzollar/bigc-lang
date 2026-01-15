@@ -1,0 +1,21 @@
+# 02_len_variants.big
+# Verifying explicit length operators
+
+# 1. Standard len (Characters)
+Name = "BigC"
+L1 = len$Name
+print "len$Name: $L1" # 4
+
+# 2. len.list (Backpack items)
+MyList = "[\"A\", \"B\", \"C\"]"
+L2 = len.list$MyList
+print "len.list$MyList: $L2" # 3
+
+# 3. len.map (Vault keys)
+MyMap = "{\"id\": 1, \"status\": \"ok\"}"
+L3 = len.map$MyMap
+print "len.map$MyMap: $L3" # 2
+
+# 4. Math Solver Integration
+Total = S[len.list$MyList + len.map$MyMap]
+print "Solver (3 + 2): $Total" # 5

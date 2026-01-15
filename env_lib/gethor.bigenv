@@ -1,0 +1,13 @@
+# BigC Standard Lab: Gethor
+# Helps with environment setup and configuration
+
+start doing EnsureConfig()
+    print "Gethor: Checking for configuration..."
+    check if "config.txt" here & set as {HasConfig}
+    
+    if HasConfig = "false"
+        write "User=Beginner\nMode=Safe\nVersion=0.3" @"config.txt"
+        print "Gethor: config.txt created."
+    or
+        print "Gethor: config.txt found."
+end doing

@@ -1,0 +1,7 @@
+# 02_debug_assign.big
+Count = 0
+print "Initial: $Count"
+Count = Count + 1
+print "After +1: $Count"
+Count = 5
+print "After =5: $Count"

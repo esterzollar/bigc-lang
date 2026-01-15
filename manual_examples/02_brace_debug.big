@@ -1,0 +1,13 @@
+# 02_brace_debug.big
+Name = "Ester"
+MyList = "[\"A\", \"B\"]"
+
+# Check what len is actually measuring
+print "Debug: Name is '$Name'"
+print "Debug: MyList is '$MyList'"
+
+L1 = len{$Name}
+print "Result: $L1"
+
+L2 = len.list{$MyList}
+print "Result List: $L2"

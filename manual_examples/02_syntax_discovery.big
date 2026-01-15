@@ -1,0 +1,26 @@
+# 02_syntax_discovery.big
+# Finding the true syntax for counting and length
+
+# 1. Testing len operator
+Words = "BigC"
+L1 = len$Words
+print "len$Words: $L1"
+
+# 2. Testing len with braces (User suggestion)
+MyList = "[\"A\", \"B\", \"C\"]"
+L2 = len{$MyList}
+print "len{$MyList}: $L2"
+
+# 3. Testing get count variations
+get count of $MyList & set as {C1}
+print "get count of $MyList: $C1"
+
+get count $MyList & set as {C2}
+print "get count $MyList: $C2"
+
+# 4. Testing get Kind as KIND pattern
+get $MyList as len & set as {C3}
+print "get $MyList as len: $C3"
+
+get $MyList as count & set as {C4}
+print "get $MyList as count: $C4"

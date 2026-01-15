@@ -1,0 +1,56 @@
+# 02_grammar.big
+# Verified Grammar & Syntax for BigC Power 0.5
+
+# 1. Unlocking
+attach len  # For LenList()
+
+# 2. Assignment
+Name = "Ester"
+Score = 100
+
+# 3. Scoping
+start doing Setup()
+    StatusRaw = "Online"
+end doing
+run Setup()
+
+# 4. Spacing Rule (@) & List Indexing
+write "Verified" @"manual_examples/verify.big"
+MyList = "[\"A\", \"B\", \"C\"]"
+get from {MyList} @1 & set as {ListVal} 
+
+# 5. Math Solver
+Math = S[(10 + 5) * 2]
+
+# 6. Math Modifiers (Full Suite)
+get 10.9 as floor & set as {Floored}
+get 10.1 as ceil & set as {Ceiled}
+get -50 as abs & set as {Absolute}
+get 10 20 as smaller & set as {Small}
+get 10 20 as bigger & set as {Big}
+get 150 0 100 as between & set as {Clamped}
+print "Math Mods: Floor($Floored) Ceil($Ceiled) Abs($Absolute) Small($Small) Big($Big) Clamp($Clamped)"
+
+# 7. Logic & Interpolation ($)
+Cost = 10
+if $Score = 100 & print "User $Name is $StatusRaw. Math: $Math. Cost: \$${Cost}"
+
+# 8. Warp w() Constructor
+Msg = w(Hello "$Name"! The price is $"$Cost").
+print "Warp: $Msg"
+
+# 9. Coder Shorthands
+print "Testing Loop Shorthand..."
+Count = 0
+s.loop
+    Count = Count + 1
+    if $Count = 3 & loop.s
+keep 1
+print "Loop finished at $Count"
+
+# 10. List Counting
+Total = 0
+start loop on {MyList} as {Item}
+    Total = Total + 1
+keep 1
+print "List has $Total items. First item: $ListVal"

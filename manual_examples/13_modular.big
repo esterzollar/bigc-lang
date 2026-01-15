@@ -1,0 +1,14 @@
+# Manual Example: 13 Modular Programming
+# Retesting with manually created lab file
+
+# 1. Attach standard library
+attach statement
+
+# 2. Use the Lab file
+use lab "manual_examples/13_helper.big"
+
+# 4. Run logic from both sources
+run Helper()
+
+MsgRaw = "Modular Programming is active."
+run LogInfo()

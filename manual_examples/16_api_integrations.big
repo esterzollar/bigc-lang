@@ -1,0 +1,48 @@
+# Chapter 16 Master Example: API & Integrations
+use web
+
+# 1. System Orchestration (build task)
+print "--- Testing build task ---"
+build task "echo 'BigC System Integration Test'" & set as {EchoResult}
+get EchoResult as clean & set as {EchoResult}
+print "System says: $EchoResult"
+
+# 2. Folder Management
+print "\n--- Testing Folder Management ---"
+create folder "api_test_dir" @"."
+write "Test file" @"api_test_dir/note.txt"
+
+list folder @"api_test_dir" & set as list {Files}
+print "Files in test dir: $Files"
+
+# Cleanup
+delete file @"api_test_dir/note.txt"
+delete file @"api_test_dir"
+
+# 3. JSON & API Flow (Local Simulation/Mock)
+print "\n--- Testing JSON Packing & Extraction ---"
+map set "id" as "123" @{DataMap}
+map set "status" as "success" @{DataMap}
+
+# Packing Map to String
+get {DataMap} & set as {JsonString}
+print "Packed JSON: $JsonString"
+
+# Extraction
+look for json "status" @JsonString & set as {Status}
+print "Extracted Status: $Status"
+
+# 4. BigNet Request (Using a reliable endpoint)
+print "\n--- Testing BigNet (httpbin.org) ---"
+user-agent "BigC-Verifier"
+header "X-BigC-Test" "Verified"
+
+get web "https://httpbin.org/get" & set as {Response}
+
+if any bug found
+    print "BigNet Error: $BugType"
+or
+    look for json "url" @Response & set as {Url}
+    print "BigNet Success! Reached: $Url"
+
+print "\nChapter 16 Verification Complete."

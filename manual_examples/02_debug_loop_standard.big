@@ -1,0 +1,9 @@
+# 02_debug_loop_standard.big
+print "Starting Standard Loop..."
+Count = 0
+start loop
+    Count = Count + 1
+    print "Spin $Count"
+    if $Count = 3 & stop loop
+keep 1
+print "Loop Finished!"

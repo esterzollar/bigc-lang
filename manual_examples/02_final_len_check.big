@@ -1,0 +1,21 @@
+# 02_final_len_check.big
+
+# 1. String Characters
+Name = "Ester"
+L1 = len$Name
+print "len$Name (5): $L1"
+
+# 2. List Items
+Backpack = "[\"A\",\"B\",\"C\"]"
+L2 = len.list$Backpack
+print "len.list$Backpack (3): $L2"
+
+# 3. Map Keys
+Vault = "{\"id\":1, \"ok\":true}"
+L3 = len.map$Vault
+print "len.map$Vault (2): $L3"
+
+# 4. Pure Math Solver check
+Math = S[len$Name + 10]
+print "Solver (5+10): $Math"
+

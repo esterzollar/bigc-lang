@@ -1,0 +1,37 @@
+# Chapter 17 Master Example: The Zen of BigC
+
+# 1. Flat Logic Test
+X = 10
+Y = 20
+# Linear chain instead of nested if
+if X = 10 & if Y = 20 & print "Flat Logic: Verified."
+
+# 2. Global Suffix (The Escape)
+start doing TestScope()
+    LocalVar = "Private"
+    SharedRaw = "Public"
+end doing
+
+run TestScope()
+
+if SharedRaw = "Public" & print "Global Suffix (Raw): Verified."
+or & print "Global Suffix: FAILED."
+
+# 3. Spacing Rule (@)
+# This test ensures the lexer accepts the correct @ spacing
+TestFile = "zen_test.txt"
+write "Zen Content" @TestFile
+
+if any bug found
+    print "Spacing Rule: FAILED (@ spacing error)"
+or
+    print "Spacing Rule (@): Verified."
+    delete file @TestFile
+
+# 4. Descriptive Naming
+ItemPrice = 50
+TaxRate = 0.1
+GrandTotal = S[ItemPrice * (1 + TaxRate)]
+print "Descriptive Naming: $ItemPrice + Tax = $GrandTotal"
+
+print "\nChapter 17 Verification Complete."

@@ -1,0 +1,28 @@
+# Manual Example: 11 Seeder
+# Generates random users and saves to DBIG
+
+print "Seeding process starting..."
+Count = 1
+
+# Using a standard loop
+start loop
+    # 1. Generate Luck
+    get luck name & set as {First} {Last}
+    get luck email & set as {Email}
+    
+    # 2. Prepare Data
+    # Variables in warp should be quoted
+    Entry = w("$First" "$Last" <"$Email">)
+    Key = w(user_"$Count")
+    
+    # 3. Save to DBIG
+    print w(> Saving: "$Key" -> "$Entry")
+    dbig set Key as Entry @"seeder_test.dbig"
+    
+    Count = Count + 1
+keep Count <= 5
+
+print "\nSeeding complete. Checking database..."
+dbig get "user_3" @"seeder_test.dbig" & set as {ThirdUser}
+print w(User 3 is: "$ThirdUser")
+

@@ -1,0 +1,18 @@
+# BigC Standard Environment: Statement
+# Provides standard logging blocks for professional output.
+
+start doing LogInfo
+    print "[INFO] $MsgRaw"
+end doing
+
+start doing LogWarning
+    print "[WARNING] $MsgRaw"
+end doing
+
+start doing LogError
+    print "[ERROR] $MsgRaw"
+end doing
+
+start doing LogSuccess
+    print "[SUCCESS] $MsgRaw"
+end doing

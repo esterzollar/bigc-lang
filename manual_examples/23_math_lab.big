@@ -1,0 +1,26 @@
+# Chapter 23 Master Example: Math Lab
+
+# 1. Advanced Math Functions
+X = 10 remainder 3
+if X = 1 & print "Math: 10 remainder 3 = 1 (Verified)"
+
+# 2. Constants
+PiVal = pi
+print w(Constants: pi is "$PiVal")
+
+# 3. System Variables (BigTick)
+get time tick & set as {T1}
+wait 0.2 s
+get time tick & set as {T2}
+Elapsed = T2 - T1
+print w(Legacy Time Test: "$Elapsed" ms)
+
+StartRaw = BigTick
+wait 0.2 s
+EndRaw = BigTick
+ElapsedRaw = EndRaw - StartRaw
+print w(System Vars: BigTick elapsed "$ElapsedRaw" ms)
+
+if ElapsedRaw > 150 & print "System Vars: BigTick works (Verified)"
+
+print "\nChapter 23 Verification Complete."

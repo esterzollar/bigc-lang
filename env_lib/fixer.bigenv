@@ -1,0 +1,6 @@
+# fixer.bigenv - The BigC Code Doctor
+# Automatically enables Indentation Forgiveness when attached.
+
+BigFixer = 1
+print "Doctor: BigC Fixer Attached. Indentation Forgiveness is ON."
+print "Doctor: Standardizing your code logic... Ready."

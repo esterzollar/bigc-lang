@@ -1,0 +1,32 @@
+# 05_filesystem.big
+# Verification of Filesystem Operations
+
+# 1. Write & Append
+write "Line 1" @"test_book.txt"
+add "\nLine 2" @"test_book.txt"
+
+# 2. Read
+open "test_book.txt" & set as {Content}
+print "Read Content: $Content"
+
+# 3. Replace on Disk
+replace "Line 1" with "Header" @"test_book.txt"
+open "test_book.txt" & set as {Updated}
+print "Updated Content: $Updated"
+
+# 4. Folder Management
+create folder "test_logs" @"."
+create file "log.txt" @"test_logs"
+check if "test_logs/log.txt" here & set as {Exists}
+print "File Exists: $Exists"
+
+# 5. List Folder
+list folder @"test_logs" & set as list {Files}
+start loop on {Files} as {F}
+    print "Folder contains: $F"
+keep 1
+
+# 6. Cleanup
+delete file @"test_logs"
+delete file @"test_book.txt"
+print "Cleanup Complete."

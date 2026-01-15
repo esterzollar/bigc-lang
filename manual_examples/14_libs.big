@@ -1,0 +1,29 @@
+# Chapter 14 Verification: Standard Libraries
+print "DEBUG: Script Started"
+
+# 1. Attach Libraries
+attach statement
+print "DEBUG: Statement Attached"
+attach picker
+print "DEBUG: Picker Attached"
+attach gethor
+print "DEBUG: Gethor Attached"
+
+# 2. Test Statement (Logging)
+run LogInfo("Starting Library Test...")
+run LogWarning("This is a warning test.")
+
+# 3. Test Picker (Random)
+run Random(1, 100) & set as {LuckyNum}
+run LogSuccess(w(Rolled a lucky number: "$LuckyNum"))
+
+# 4. Test Gethor (Config)
+run EnsureConfig()
+
+# 5. Cleanup
+check if "config.txt" here & set as {ConfigExists}
+if $ConfigExists = "true"
+    delete file @"config.txt"
+    run LogInfo("Cleaned up config.txt")
+
+run LogSuccess("Chapter 14 Verification Complete.")

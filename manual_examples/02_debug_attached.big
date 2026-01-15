@@ -1,0 +1,10 @@
+# 02_debug_attached.big
+MyList = "[\"A\",\"B\",\"C\"]"
+
+# Separated
+L1 = len $MyList
+print "Separated: $L1"
+
+# Attached
+L2 = len$MyList
+print "Attached: $L2"

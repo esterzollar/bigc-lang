@@ -1,0 +1,10 @@
+# 02_json_final.big
+List = "[\"A\", \"B\", \"C\"]"
+Map = "{\"id\": 1, \"ok\": true}"
+
+# NO $ BEFORE len!
+C1 = len.list{$List}
+C2 = len.map{$Map}
+
+print "List count (3): $C1"
+print "Map count (2): $C2"

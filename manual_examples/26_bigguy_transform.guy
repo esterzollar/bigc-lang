@@ -1,0 +1,61 @@
+# Chapter 26 Master Example: Visual Transformations
+use autolayering
+
+start view Main
+    init
+        set window title "BigGuy Transformations Verification"
+        set window size 800 600
+        
+        # Animation State
+        RotationRaw = 0
+        ScaleRaw = 1.0
+        ScaleDirRaw = 1
+        AlphaRaw = 1.0
+        AlphaDirRaw = -1
+    end
+
+    # --- LOGIC ---
+    
+    # 1. Rotate (0 to 360)
+    RotationRaw = RotationRaw + 2
+    if RotationRaw > 360 & RotationRaw = 0
+    
+    # 2. Pulse Scale (0.8 to 1.2)
+    if ScaleDirRaw = 1 & ScaleRaw = ScaleRaw + 0.005
+    if ScaleDirRaw = -1 & ScaleRaw = ScaleRaw - 0.005
+    if ScaleRaw > 1.2 & ScaleDirRaw = -1
+    if ScaleRaw < 0.8 & ScaleDirRaw = 1
+    
+    # 3. Fade Alpha (0.2 to 1.0)
+    if AlphaDirRaw = 1 & AlphaRaw = AlphaRaw + 0.005
+    if AlphaDirRaw = -1 & AlphaRaw = AlphaRaw - 0.005
+    if AlphaRaw > 1.0 & AlphaDirRaw = -1
+    if AlphaRaw < 0.2 & AlphaDirRaw = 1
+
+    # --- RENDER ---
+    
+    # Layer: bg (Background - Static)
+    draw rectangle size 800 600 fill "#111122" layer "bg" at 0 0
+
+    # Layer: master (Transformations)
+    
+    # A. Rotation & Tint
+    draw text "Rotation & Tint" at 100 50 size 16 layer "master"
+    draw image "png folder/backpack.png" at 150 150 size 100 100 rotate RotationRaw tint "#FF8888" layer "master"
+    
+    # B. Scale & Stroke
+    draw text "Scale & Stroke" at 350 50 size 16 layer "master"
+    # Using a rectangle to test stroke/border since images might not show stroke clearly
+    draw rectangle at 400 150 size 100 100 fill "#4444FF" scale ScaleRaw stroke "#FFFFFF" border 4 layer "master"
+    
+    # C. Alpha (Ghost)
+    draw text "Alpha Fade" at 600 50 size 16 layer "master"
+    draw image "png folder/mrincredible.png" at 600 150 size 100 150 alpha AlphaRaw layer "master"
+
+    # Layer: ui (On Top)
+    draw text "BigGuy Phase 2: Visual Magic" at 20 550 size 24 layer "ui" fill "#FFFFFF"
+    
+    if keydown "escape" & stop run
+end view
+
+start guy Main

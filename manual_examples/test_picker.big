@@ -1,0 +1,22 @@
+# Comprehensive Test for Picker Library
+
+# 1. Attach the library
+attach picker & print "Picker Attached Successfully"
+
+# 2. Test Legacy Random (No params, sets ResultRaw)
+run Random()
+print "Random 1: $ResultRaw"
+
+# 3. Test Randomness (Run again)
+run Random()
+print "Random 2: $ResultRaw"
+
+# 4. Direct Engine Test (Luck command)
+get luck random 500 1000 & set as {DirectLuck}
+print "Direct Luck (500-1000): $DirectLuck"
+
+# 5. Variable interpolation test
+Min = 10
+Max = 20
+get luck random $Min $Max & set as {VarLuck}
+print "Variable Luck (10-20): $VarLuck"

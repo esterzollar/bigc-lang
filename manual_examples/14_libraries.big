@@ -1,0 +1,15 @@
+# Manual Example: 14 Standard Libraries
+attach statement & print "Statement Attached"
+attach picker & print "Picker Attached"
+
+# Picker Random sets ResultRaw
+run Random()
+LuckyNumRaw = ResultRaw
+print w(DEBUG: LuckyNumRaw is "$LuckyNumRaw")
+
+# Statement blocks use MsgRaw
+MsgRaw = w(The lucky number is "$LuckyNumRaw")
+run LogSuccess()
+
+if LuckyNumRaw > 50 & MsgRaw = "High Score!" & run LogInfo()
+or & MsgRaw = "Low Score." & run LogWarning()

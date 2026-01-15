@@ -1,0 +1,15 @@
+# 02_len_diagnostic.big
+
+# Test 1: Literal JSON
+L1 = len.list["A","B","C"]
+print "Literal List Count: $L1"
+
+# Test 2: Variable JSON
+MyList = "[\"A\",\"B\",\"C\"]"
+L2 = len.list$MyList
+print "Variable List Count: $L2"
+
+# Test 3: Math Solver with Literals
+M1 = S[len.list["A","B"] + 10]
+print "Solver Literal (2+10): $M1"
+

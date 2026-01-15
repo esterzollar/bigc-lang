@@ -1,0 +1,38 @@
+# Chapter 28 Master Example: BigGuy Ma
+# 1. DEFINE STYLES (Sub-style system)
+start style Wiki.h1
+    size 40
+    fill "#00D1FF"
+end style
+
+start style Wiki.body
+    size 18
+    fill "#FFFFFF"
+end style
+
+start style Wiki.bold
+    fill "#FFFF00"
+end style
+
+start style Wiki.link
+    fill "#22C55E"
+end style
+
+start view Main
+    init
+        set window title "BigGuy Markdown Verification"
+        set window size 800 600
+        
+        # Markdown Content
+        MDContentRaw = "# Welcome to BigC\nThis is a **Markdown** rendering test.\n\n*   Native Egui Integration\n*   Automatic Word Wrapping\n*   [Click to visit Wiki](https://bigc.org)\n\n> This is a blockquote showing the vertical bar style."
+    end
+
+    draw rectangle size 800 600 fill "#1A1A2E" at 0 0
+
+    # Draw Markdown using the 'Wiki' style base
+    draw markdown $MDContentRaw style Wiki at 40 40 width 720
+    
+    if keydown "escape" & stop run
+end view
+
+start guy Main

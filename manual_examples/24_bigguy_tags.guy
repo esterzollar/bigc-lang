@@ -1,0 +1,35 @@
+# Chapter 24 Master Example: BigGuy Tags & Audio
+
+start view Main
+    init
+        set window title "BigGuy Tags & Audio"
+        set window size 400 400
+        StatusRaw = "Click the Orb!"
+    end
+
+    # 1. Image Tag System
+    # Clicking this image will trigger 'if click "OrbTag"'
+    draw image "orb.ppm" tag "OrbTag" at 150 100 size 100 100
+    
+    if click "OrbTag"
+        StatusRaw = "Orb Clicked! (Beep)"
+        beep
+    end if
+
+    # 2. Audio Playback
+    draw button "Play Click Sound" at 100 250 size 200 40
+    if btnclick
+        StatusRaw = "Playing click.wav"
+        play sound "click.wav"
+    end if
+
+    # UI Render
+    draw text "Tagged System Test" at 20 20 size 24
+    draw text "Status: $StatusRaw" at 20 60 size 18 fill "#00FF00"
+    
+    draw text "Orb (Tagged Image)" at 140 210 size 14
+    
+    if keydown "escape" & stop run
+end view
+
+start guy Main

@@ -1,0 +1,23 @@
+# BigC Standard Environment: Math
+# Provides advanced math functions for games and UI.
+
+# Calculates distance between two points
+start doing Distance(x1, y1, x2, y2)
+    xd = x2 - x1
+    yd = y2 - y1
+    sq = S[ (xd ^ 2) + (yd ^ 2) ]
+    get sqrt sq & set as DistRaw
+end doing
+
+# Clamps a value between min and max
+start doing Clamp(val, min, max)
+    get val min max as between & set as ClampRaw
+end doing
+
+# Linear Interpolation (Lerp)
+# Moves 'start' towards 'end' by 't' percent (0.0 to 1.0)
+start doing Lerp(start, end, t)
+    diff = end - start
+    mod = diff * t
+    LerpRaw = start + mod
+end doing

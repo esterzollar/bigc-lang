@@ -1,0 +1,4 @@
+start doing Helper()
+    print "Hello from the Lab!"
+end doing
+run Helper()

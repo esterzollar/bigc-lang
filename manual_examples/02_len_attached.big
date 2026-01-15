@@ -1,0 +1,20 @@
+# 02_len_attached.big
+# Verifying attach len library
+
+attach len
+
+# 1. Native len (Strings)
+Name = "Ester"
+LenString = len{$Name}
+print "String Length: $LenString (Expected: 5)"
+
+# 2. Attached LenList (Items)
+MyList = "[\"A\", \"B\", \"C\"]"
+run LenList($MyList)
+print "List Items: $LenResultRaw (Expected: 3)"
+
+# 3. Native len on List (Characters)
+# ["A", "B", "C"] is 13 chars including spaces/quotes?
+# Let's see what the engine stores.
+LenListChar = len{$MyList}
+print "List String Chars: $LenListChar"

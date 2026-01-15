@@ -1,0 +1,33 @@
+# Chapter 18 Master Example: Troubleshooting
+
+# 1. Testing the "Blessed Check" Pattern
+print "--- Testing Error Catching ---"
+open "non_existent_file.txt" & set as {Data}
+
+if any bug found
+    print "Caught Expected Bug: $BugType"
+or
+    print "Error Catching FAILED (File should not exist)"
+
+# 2. Testing Logic Safety
+print "\n--- Testing Logic Safety ---"
+# Variables inside doing are local
+start doing ScopeTest()
+    LocalVal = "Hidden"
+end doing
+run ScopeTest()
+print "LocalVal is: $LocalVal" # Should print "$LocalVal" as it's not global
+
+# 3. Testing the Fixer (Heuristic Healing)
+# Note: Fixer behavior is internal, but we can verify it attaches
+print "\n--- Testing Fixer Attachment ---"
+attach fixer
+print "Fixer attached. Code Doctor is active."
+
+# 4. Reserved Keyword Warning (Internal Logic)
+# (Visual Verification)
+ValReserved = "This is fine"
+# Val = "This will cause issues" # Don't do this!
+
+print "\nChapter 18 Verification Complete."
+

@@ -1,0 +1,16 @@
+# 02_len_test_final.big
+
+# Test 1: String length
+S = "ABC"
+L = len$S
+print "String len (3): $L"
+
+# Test 2: List length
+List = "[\"A\",\"B\"]"
+C = len.list$List
+print "List count (2): $C"
+
+# Test 3: List with spaces
+List2 = "[\"A\", \"B\", \"C\"]"
+C2 = len.list$List2
+print "List count (3): $C2"

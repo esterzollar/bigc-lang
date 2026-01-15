@@ -1,0 +1,43 @@
+# Manual Example: 08 BigNet
+# Tests HTTP GET, POST, Scraping, and JSON Parsing
+
+# 1. Setup Identity
+user-agent "BigC Manual Test/1.0"
+header "Accept" "application/json"
+
+# 2. Test GET Request
+print "Fetching httpbin.org/get..."
+get web "https://httpbin.org/get" & set as {Response}
+
+if any bug found
+    print "GET Failed: $BugType"
+    stop run
+
+# 3. Test JSON Extraction (Chained)
+# look for json "headers.User-Agent" -> Not supported!
+# Must do: Response -> headers -> User-Agent
+look for json "headers" @Response & set as {Headers}
+look for json "User-Agent" @Headers & set as {MyUA}
+print "My User-Agent is: $MyUA"
+
+# 4. Test POST Request
+print "\nSending POST to httpbin.org/post..."
+header "Content-Type" "application/json"
+Payload = "{\"message\": \"Hello from BigC\"}"
+get post "https://httpbin.org/post" with Payload & set as {PostResponse}
+
+# Chained lookup for nested "json" -> "message"
+look for json "json" @PostResponse & set as {JsonPart}
+look for json "message" @JsonPart & set as {ReturnedMsg}
+print "Server returned: $ReturnedMsg"
+
+# 5. Test CSS Scraping (Simulated)
+# We will treat the JSON response as a string source for 'all' selector check
+look for "all" @PostResponse & set as {FullSource}
+get len{FullSource} & set as {Size}
+print "\nFull response size: $Size bytes"
+
+# 6. Test Data Validation
+get ReturnedMsg as alphanumeric & set as {IsAlpha}
+# Expected: false (because of spaces in "Hello from BigC")
+print "Is message alphanumeric? $IsAlpha"

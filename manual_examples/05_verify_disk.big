@@ -1,0 +1,5 @@
+# 05_verify_disk.big
+create folder "disk_check" @"."
+write "Disk Verification Content" @"disk_check/proof.txt"
+add "\nAppended Line" @"disk_check/proof.txt"
+print "Files created. Please check disk_check/proof.txt"

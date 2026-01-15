@@ -1,0 +1,46 @@
+# Manual Example: 09 Utilities
+use pyBig
+
+# 1. Identity Generation (Luck)
+get luck name & set as {FirstName} {LastName}
+get luck email & set as {UserEmail}
+print "Luck Test: $FirstName $LastName ($UserEmail)"
+
+# 2. Cryptography (Bit)
+SecretKey = "super-secret-key"
+RawMsg = "BigC Power 0.5"
+bit code RawMsg with SecretKey nebc & set as {Encoded}
+print "Bit Test (Encode): $Encoded"
+bit decode Encoded with SecretKey nebc & set as {Decoded}
+print "Bit Test (Decode): $Decoded"
+
+# 3. Pattern Matching (Bmath)
+SampleText = "USER_123"
+bmath SampleText @"^[A-Z]+_\d+$" & set as {IsOk}
+print "Bmath Test: Is '$SampleText' valid? $IsOk"
+
+# 4. String Manipulation (as)
+get "  padded string  " as clean & set as {Step1}
+get Step1 as bigcap & set as {Step2}
+print "String Test: Original='  padded string  ' Final='$Step2'"
+
+# 5. String Replacement (replace)
+get "I love Apples" replace "Apples" with "Bananas" & set as {FruitChange}
+print "Replace Test: $FruitChange"
+
+# 6. Time (tick/unix)
+get time unix & set as {UnixTime}
+get time tick & set as {StartupMs}
+print "Time Test: Unix=$UnixTime | Uptime=$StartupMs ms"
+
+# 7. External (PyBig)
+print "PyBig Test: Starting Python block..."
+python3 start
+import sys
+print(f"  > Python Version: {sys.version.split()[0]}")
+python3 end
+
+# 8. CLI Command Arguments
+get command & set as list {Args}
+get from {Args} @1 & set as {First}
+print "CLI Test: First Arg='$First' (Full List: $Args)"

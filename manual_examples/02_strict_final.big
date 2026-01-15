@@ -1,0 +1,22 @@
+# 02_strict_final.big
+# Strict container syntax verification
+
+Name = "Ester"
+MyList = "[\"A\", \"B\"]"
+MyMap = "{\"id\": 1}"
+
+# 1. String Chars
+L1 = len{$Name}
+print "len{\$Name}: $L1"
+
+# 2. List Items
+L2 = len.list{$MyList}
+print "len.list{\$MyList}: $L2"
+
+# 3. Map Keys
+L3 = len.map{$MyMap}
+print "len.map{\$MyMap}: $L3"
+
+# 4. Literal Check
+L4 = len{"Literal"}
+print "len{\"Literal\"}: $L4"

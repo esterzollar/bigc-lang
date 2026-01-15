@@ -1,0 +1,19 @@
+# 02_list_test.big
+# Targeted test for list counting
+
+MyList = "[\"Apple\",\"Banana\",\"Cherry\"]"
+
+# Try the 'as count' transformer
+get $MyList as count & set as {Size1}
+print "Method 1 (as count): $Size1"
+
+# Try the 'get count of' handler
+get count of {MyList} & set as {Size2}
+print "Method 2 (get count of): $Size2"
+
+# Try the loop method (The "Always Works" Way)
+Total = 0
+start loop on {MyList} as {Item}
+    Total = Total + 1
+keep 1
+print "Method 3 (Loop): $Total"

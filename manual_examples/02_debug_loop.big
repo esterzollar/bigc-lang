@@ -1,0 +1,10 @@
+# 02_debug_loop.big
+print "Starting Debug Loop..."
+Count = 0
+s.loop
+    Count = Count + 1
+    print "Spin $Count"
+    if $Count = 3 & print "Breaking now!"
+    if $Count = 3 & loop.s
+keep 1
+print "Loop Finished!"

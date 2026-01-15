@@ -1,0 +1,6 @@
+# BigC Standard Environment: Picker
+# Provides random number generation utilities
+
+start doing Random
+    get luck random 1 100 & set as ResultRaw
+end doing

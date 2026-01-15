@@ -1,0 +1,8 @@
+# 02_len_final_fix.big
+Name = "Ester"
+L1 = len{$Name}
+print "Result: $L1"
+
+# Compare with literal
+L2 = len{"Ester"}
+print "Literal: $L2"

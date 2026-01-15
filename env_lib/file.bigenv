@@ -1,0 +1,20 @@
+# BigC Standard Environment: File
+# Safe file handling wrappers.
+
+# Reads a file safely. Returns empty string if missing. -> 'FileRaw'
+start doing SafeRead(path)
+    check if path here & set as Exists
+    if Exists = "true"
+        open path & set as FileRaw
+    or
+        print "[SafeRead] Warning: File not found -> $path"
+        FileRaw = ""
+end doing
+
+# Appends a timestamped message to a log file.
+start doing AppendLog(msg, path)
+    get time unix & set as Ts
+    LogMsg = "[$Ts] $msg\n"
+    add LogMsg @path
+end doing
+

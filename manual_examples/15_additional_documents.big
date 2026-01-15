@@ -1,0 +1,51 @@
+# 15_additional_documents.big
+# Test script for Chapter 15: Additional Documents (Advanced Concepts)
+
+
+# 1. System Variables
+# $BugType - Let's try to trigger a minor bug
+print "--- 1. System Variables ---"
+# causing a bug by opening a non-existent file
+open "non_existent_file_999.txt" & set as {Content}
+if any bug found & print "Bug caught: $BugType"
+
+# 2. Naming Conventions & Scope
+print "\n--- 2. Naming Conventions & Scope ---"
+start doing TestScope()
+    LocalVar = "I am local"
+    GlobalRaw = "I am global"
+end doing
+
+run TestScope()
+# LocalVar should be empty or error if accessed (BigC usually returns "nothing" or empty)
+if LocalVar = "nothing" & print "LocalVar is correctly not found."
+or print "LocalVar status: $LocalVar (Expected: nothing or empty)"
+
+if GlobalRaw = "I am global" & print "GlobalRaw is correctly global."
+or print "GlobalRaw status: $GlobalRaw (Expected: I am global)"
+
+# 3. String Escaping
+print "\n--- 3. String Escaping ---"
+print "Line 1\nLine 2"
+print "This is a quote: \"quoted\""
+print "This is a variable placeholder: \$Price"
+
+# 4. Event Queue
+print "\n--- 4. Event Queue ---"
+event push "SignalOne"
+event push "SignalTwo"
+
+event pop & set as {Ev1}
+event pop & set as {Ev2}
+event pop & set as {Ev3}
+
+print "Event 1: $Ev1"
+print "Event 2: $Ev2"
+print "Event 3: $Ev3"
+
+# 5. Security (Sanitize Input Concept)
+# Not much to test here functionally, just syntax check if get ... as exists
+# Using get ... as for type conversion/sanitization
+NumStr = "123.45"
+get NumStr as floor & set as {CleanNum}
+print "Sanitized Floor: $CleanNum"

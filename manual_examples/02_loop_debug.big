@@ -1,0 +1,22 @@
+# 02_loop_debug.big
+
+start doing TestLoop(TheList)
+    print "Debug: Inside TestLoop arg=$TheList"
+    Count = 0
+    # Try loop on the variable content
+    start loop on {TheList} as {Item}
+        print "Debug: Item is $Item"
+        Count = Count + 1
+    keep 1
+    global GlobalCountRaw = $Count
+end doing
+
+MyList = "[\"A\", \"B\"]"
+print "Debug: MyList is $MyList"
+print "Debug: Calling TestLoop with literal..."
+run TestLoop("[\"A\", \"B\"]")
+print "Debug: Result Literal is $GlobalCountRaw"
+
+print "Debug: Calling TestLoop with var..."
+run TestLoop($MyList)
+print "Debug: Result Var is $GlobalCountRaw"

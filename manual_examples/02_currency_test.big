@@ -1,0 +1,9 @@
+# 02_currency_test.big
+# Verification of Currency Syntax in Warp
+
+Price = 10.50
+GrandTotal = 100.00
+
+# Note: "Total" label is quoted to prevent accidental variable substitution
+Msg = w("Cost": $"$Price" | "Final": $"$GrandTotal")
+print "$Msg"

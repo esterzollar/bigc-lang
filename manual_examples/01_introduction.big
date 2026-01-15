@@ -1,0 +1,5 @@
+# 01_introduction.big
+# This is a verified example for Chapter 1 of the BigC Textbook.
+
+print "Hello! Welcome to the BigC Ecosystem."
+print "This script proves that the engine is running correctly."

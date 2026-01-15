@@ -1,0 +1,36 @@
+# Chapter 22 Master Example: BigGuy Basic
+# Note: This MUST be .guy to run the GUI engine
+
+start view Main
+    init
+        set window title "BigGuy Verification"
+        set window size 400 300
+        BoxXRaw = 50
+        StatusRaw = "Ready"
+    end
+
+    # Logic - Try multiple key names to be safe
+    if keydown "right" & BoxXRaw = BoxXRaw + 5
+    if keydown "arrowright" & BoxXRaw = BoxXRaw + 5
+    
+    if keydown "left" & BoxXRaw = BoxXRaw - 5
+    if keydown "arrowleft" & BoxXRaw = BoxXRaw - 5
+
+    # Render
+    draw text "BigGuy Basic Test" at 20 20 size 24 fill "#FFFFFF"
+    draw text "Status: $StatusRaw" at 20 60 size 18 fill "#00FF00"
+    
+    # Debug Position
+    draw text "Box X: $BoxXRaw" at 20 100 size 14 fill "#FFFF00"
+    
+    draw rectangle size 50 50 fill "#FF0000" at BoxXRaw 140
+    
+    draw button "Click Me" at 20 200 size 100 40
+    if btnclick & StatusRaw = "Button Clicked!"
+
+    draw text "Use Arrows to move box" at 20 260 size 14
+    
+    if keydown "escape" & stop run
+end view
+
+start guy Main

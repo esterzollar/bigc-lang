@@ -1,0 +1,25 @@
+# 02_smart_len_test.big
+# Verifying the new Smart Len (Polymorphic Length)
+
+# 1. Literal Mode (Measure the word itself)
+L1 = len Name
+print "Literal 'Name' length: $L1"  # Should be 4
+
+# 2. Data Mode (Measure the content)
+Name = "Ester"
+L2 = len$Name
+print "Data inside $Name: $L2"     # Should be 5
+
+# 3. Backpack Mode (Count items)
+MyList = "[\"Apple\", \"Banana\", \"Cherry\"]"
+L3 = len$MyList
+print "Items in Backpack: $L3"      # Should be 3 (not character count!)
+
+# 4. Vault Mode (Count keys)
+MyMap = "{\"id\": 1, \"status\": \"ok\"}"
+L4 = len$MyMap
+print "Keys in Map: $L4"            # Should be 2
+
+# 5. Math Lab Integration
+Math = S[len$MyList + 10]
+print "Math (3 + 10): $Math"        # Should be 13

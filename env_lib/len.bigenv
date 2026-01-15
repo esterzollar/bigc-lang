@@ -1,0 +1,21 @@
+# len.bigenv
+# Explicit counting utilities for BigC Power 0.5
+
+# Usage: run LenList("VarName")
+start doing LenList(TargetName)
+    Count = 0
+    # Targeted variable by name
+    start loop on {TargetName} as {Item}
+        Count = Count + 1
+    keep 1
+    LenResultRaw = $Count
+end doing
+
+# Usage: run LenMap("VarName")
+start doing LenMap(TargetName)
+    Count = 0
+    start loop on {TargetName} as {Key} {Val}
+        Count = Count + 1
+    keep 1
+    LenResultRaw = $Count
+end doing

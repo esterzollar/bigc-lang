@@ -1,0 +1,23 @@
+# Manual Example: 08 BigNet
+# Tests HTTP GET with a very stable URL
+
+# 1. Setup Identity
+user-agent "Mozilla/5.0"
+
+# 2. Test GET Request
+print "Fetching google.com..."
+get web "https://www.google.com" & set as {Response}
+
+# Check if fetch worked
+if any bug found
+    print "Network Error: $BugType"
+    stop run
+
+# 3. Print result length
+get len{Response} & set as {Size}
+print "Response length: $Size bytes"
+
+# 4. Check snippet of content
+# Look for title tag in HTML
+look for "title" @Response & set as {Title}
+print "Page Title: $Title"

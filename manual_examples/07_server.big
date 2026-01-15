@@ -1,0 +1,22 @@
+use web
+
+on get "/" run Home
+on get "/api/+" run Api
+
+start doing Home()
+    print "Server: Home Hit"
+    print "Path: $RequestPathRaw"
+    reply with "Welcome to BigWeb"
+end doing
+
+start doing Api()
+    print "Server: API Hit"
+    print "Extra: $RequestExtraRaw"
+    reply point 201
+    reply note "X-Test" as "BigC"
+    reply with "{\"status\": \"ok\", \"extra\": \"$RequestExtraRaw\"}"
+end doing
+
+print "Starting Server on 8086..."
+start server @8086
+

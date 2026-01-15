@@ -1,0 +1,35 @@
+# 03_control_flow.big
+# Control Flow Verification
+
+# 1. Logic & Numeric Truth
+Status = 1
+if $Status & print "System is Online (1 is True)"
+
+# 2. Smart Loops & Refuel
+Fuel = 0
+start loop.r.5
+    Fuel = Fuel + 1
+    if $Fuel = 4
+        print "Refueling at 4..."
+        keep loop
+keep $Fuel < 8
+print "Loop finished with Fuel: $Fuel"
+
+# 3. For-Each Iteration
+Backpack = "[\"Sword\", \"Shield\"]"
+start loop on {Backpack} as {Item}
+    print "Found: $Item"
+keep 1
+
+# 4. Functions & Scope
+GlobalRaw = "Old"
+start doing Change()
+    Local = "Private"
+    GlobalRaw = "New"
+end doing
+run Change()
+print "Global: $GlobalRaw"
+
+# 5. Bug Catching
+delete file "nonexistent.big"
+if any bug found & print "Caught Expected Bug: $BugType"

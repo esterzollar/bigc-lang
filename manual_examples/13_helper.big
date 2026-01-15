@@ -1,0 +1,4 @@
+# Lab File for Modular Programming
+start doing Helper()
+    print "Hello from the External Lab File!"
+end doing

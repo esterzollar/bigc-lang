@@ -1,0 +1,26 @@
+# Manual Example: 07 BigWeb
+use web
+
+# 1. Configuration
+control limit 100 per mins
+control record @"server_test.log"
+
+# 2. Define Routes
+on get "/" run Home
+on get "/api/+" run ApiHandler
+
+# 3. Define Logic
+start doing Home()
+    reply note "Content-Type" as "text/html"
+    reply with "<h1>Welcome to BigWeb</h1>"
+end doing
+
+start doing ApiHandler()
+    # $RequestExtra holds the part after /api/
+    reply note "Content-Type" as "application/json"
+    reply with "{\"endpoint\": \"$RequestExtra\"}"
+end doing
+
+# 4. Start Server
+print "Starting BigWeb Test Server on 8085..."
+start server @8085

@@ -1,0 +1,3 @@
+start doing Test(msg)
+    print "Inside Test: $msg"
+end doing

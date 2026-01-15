@@ -1,0 +1,5 @@
+MyContent = "Line 1
+Line 2"
+write MyContent @"newline_test.txt"
+print "File written with newline."
+

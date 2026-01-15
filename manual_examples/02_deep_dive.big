@@ -1,0 +1,19 @@
+# 02_deep_dive.big
+Name = "Ester"
+MyList = "[\"A\",\"B\"]"
+
+# Test 1: Direct String Length
+L1 = len"Ester"
+print "L1 (len\"Ester\"): $L1"
+
+# Test 2: Standard Variable Length
+L2 = len$Name
+print "L2 (len$Name): $L2"
+
+# Test 3: Braced Variable Length
+L3 = len{$Name}
+print "L3 (len{$Name}): $L3"
+
+# Test 4: List Item Count
+C1 = len.list{$MyList}
+print "C1 (len.list{$MyList}): $C1"

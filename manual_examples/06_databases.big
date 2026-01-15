@@ -1,0 +1,39 @@
+# 06_databases.big
+# Verification of DBIG and SQL
+
+# --- PART 1: DBIG ---
+DB = "test_vault.dbig"
+create file "test_vault.dbig" @"."
+
+# 1. Set & Get
+dbig set "Player" as "Ester" @"$DB"
+dbig get "Player" @"$DB" & set as {Res}
+print "DBIG Read: $Res"
+
+# 2. List Support
+# Note: "as list" expects a list variable or json string
+dbig set "Inventory" as list "[\"Sword\", \"Shield\"]" @"$DB"
+dbig check "Sword" of "Inventory" @"$DB" & set as {HasSword}
+print "Has Sword: $HasSword"
+
+# 3. Scanner
+dbig set "Score_P1" as "50" @"$DB"
+dbig set "Score_P2" as "150" @"$DB"
+dbig check keys value > 100 @"$DB" & set as list {Winners}
+get from {Winners} @1 & set as {Winner}
+print "High Scorer: $Winner"
+
+# --- PART 2: SQL ---
+use sql
+SQL_DB = "test_sql.db"
+
+# 4. Run & Fetch
+run sql "CREATE TABLE IF NOT EXISTS logs (msg TEXT)" on "$SQL_DB"
+run sql "INSERT INTO logs VALUES ('Hello SQL')" on "$SQL_DB"
+get sql "SELECT msg FROM logs" on "$SQL_DB" & set as list {Logs}
+get from {Logs} @1 & set as {LogMsg}
+print "SQL Read: $LogMsg"
+
+# Cleanup
+# Note: Engine handles lock file cleanup.
+if any bug found & print "Error during execution."

@@ -1,0 +1,21 @@
+# 02_strict_len.big
+# Verifying strict len{...} syntax
+
+# 1. Strings
+Name = "Ester"
+L1 = len{$Name}
+print "len{$Name}: $L1" # Should be 5
+
+# 2. Lists
+MyList = "[\"A\", \"B\"]"
+L2 = len.list{$MyList}
+print "len.list{$MyList}: $L2" # Should be 2
+
+# 3. Maps
+MyMap = "{\"id\": 1}"
+L3 = len.map{$MyMap}
+print "len.map{$MyMap}: $L3" # Should be 1
+
+# 4. Math Solver
+Total = S[len{$Name} + len.list{$MyList}]
+print "Solver (5 + 2): $Total" # Should be 7

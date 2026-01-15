@@ -1,0 +1,32 @@
+# 04_data_structures.big
+# Verification of Lists, Maps, and Blueprints
+
+# 1. Lists (Backpacks)
+split "Sword,Shield,Potion" by "," & set as list {Backpack}
+list add "Map" @{Backpack}
+list sort @{Backpack}
+get from {Backpack} @1 & set as {FirstItem}
+print "First Item: $FirstItem"
+
+# 2. Maps
+User = "{}"
+map set "name" as "Ester" @{User}
+map set "role" as "Admin" @{User}
+map get "name" of {User} & set as {Name}
+print "User Name: $Name"
+
+# 3. Blueprints
+[Blueprint: Npc]
++ hp : 50
++ name : "Guard"
+
+pin Npc to "guard1"
+guard1.hp = 75
+print "Guard HP: $guard1.hp"
+
+# 4. Serialization
+pack {guard1} as json & set as {JsonData}
+print "Serialized: $JsonData"
+
+unpack $JsonData as map & set as {Clone}
+print "Unpacked Name: $Clone.name"

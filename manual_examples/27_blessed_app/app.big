@@ -1,0 +1,19 @@
+# Chapter 27: The Blessed Way (Verification)
+
+# 1. Unlocks
+use lab
+
+# 2. Libraries
+use lab "logic.big"
+
+# 3. Initial State
+ScoreRaw = 50
+
+# 4. Start
+print "App: Starting..."
+run CalculateStats(ScoreRaw)
+
+if FinalScoreRaw = 100
+    print "App: Success! Logic was shared."
+or
+    print "App: Failed. FinalScoreRaw is $FinalScoreRaw"
