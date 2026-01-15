@@ -93,7 +93,8 @@ BigC is released under the **BigC Universal Public Mandate License (BUPML)**.
 *   **Property of esterzollar**: The engine and brand are sovereign property.
 *   **100% Free**: Free for personal, educational, and commercial use.
 *   **Freedom to Fork**: You are encouraged to fork the engine and evolve the logic.
-*   **Open GUI**: The GUI Source ("The Face") is open for community contributions!
+*   **Open Source**: The full source code is available in the Core Repository:
+    *   **[esterzollar/bigc-core](https://github.com/esterzollar/bigc-core)** (Rust Engine Source)
 
 **Architect:** [esterzollar](https://github.com/esterzollar)
 
