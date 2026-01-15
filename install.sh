@@ -21,17 +21,31 @@ echo "Creating system directories..."
 sudo mkdir -p /usr/local/share/bigc/env_lib
 sudo mkdir -p /usr/local/lib/bigc
 
-# 2. Download Binary
-echo "Downloading bigrun engine..."
-sudo curl -sSL "$BASE_URL/bigrun" -o /usr/local/lib/bigc/bigrun_engine
+# 2. Download and Extract Release
+echo "Downloading BigC V.1.0 Mandate..."
+TEMP_DIR=$(mktemp -d)
+TARBALL="bigc-v1.0-mandate.tar.gz"
+DOWNLOAD_URL="https://github.com/esterzollar/bigc-lang/releases/download/v1.0-release/$TARBALL"
+
+sudo curl -sSL "$DOWNLOAD_URL" -o "$TEMP_DIR/$TARBALL"
+
+echo "Extracting..."
+sudo tar -xzf "$TEMP_DIR/$TARBALL" -C "$TEMP_DIR"
+
+# 3. Install Files
+echo "Installing files..."
+sudo cp "$TEMP_DIR/bigrun" /usr/local/lib/bigc/bigrun_engine
 sudo chmod +x /usr/local/lib/bigc/bigrun_engine
 
-# 3. Download Standard Libraries (env_lib)
-echo "Downloading standard libraries..."
-LIBS=("file" "fixer" "gethor" "len" "math" "picker" "shim" "statement" "test")
-for lib in "${LIBS[@]}"; do
-    sudo curl -sSL "$BASE_URL/env_lib/$lib.bigenv" -o "/usr/local/share/bigc/env_lib/$lib.bigenv"
-done
+# Install Libraries
+# (The tarball contains env_lib folder directly)
+if [ -d "$TEMP_DIR/env_lib" ]; then
+    sudo cp -r "$TEMP_DIR/env_lib"/* /usr/local/share/bigc/env_lib/
+fi
+
+# Cleanup
+rm -rf "$TEMP_DIR"
+
 
 # 4. Create Global Wrapper
 echo "Installing global wrapper..."

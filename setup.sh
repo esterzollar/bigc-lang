@@ -20,17 +20,22 @@ echo -e "${BLUE}BigC: Local Setup starting...${NC}"
 echo "Creating local env_lib..."
 mkdir -p env_lib
 
-# 2. Download Binary
-echo "Downloading bigrun engine..."
-curl -sSL "$BASE_URL/bigrun" -o bigrun
+# 2. Download and Extract Release
+echo "Downloading BigC V.1.0 Mandate..."
+TARBALL="bigc-v1.0-mandate.tar.gz"
+DOWNLOAD_URL="https://github.com/esterzollar/bigc-lang/releases/download/v1.0-release/$TARBALL"
+
+curl -sSL "$DOWNLOAD_URL" -o "$TARBALL"
+
+echo "Extracting..."
+tar -xzf "$TARBALL"
+
+# Cleanup
+rm "$TARBALL"
+
+# Set Permissions
 chmod +x bigrun
 
-# 3. Download Standard Libraries (env_lib)
-echo "Downloading standard libraries..."
-LIBS=("file" "fixer" "gethor" "len" "math" "picker" "shim" "statement" "test")
-for lib in "${LIBS[@]}"; do
-    curl -sSL "$BASE_URL/env_lib/$lib.bigenv" -o "env_lib/$lib.bigenv"
-done
 
 # 4. Create Template app.big
 if [ ! -f "app.big" ]; then
